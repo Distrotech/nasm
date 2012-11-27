@@ -117,3 +117,9 @@ xmm1-15	XMMREG		xmmreg		1
 # AVX registers
 ymm0	YMM0		ymmreg		0
 ymm1-15	YMMREG		ymmreg		1
+
+# KNC (Xeon Phi) registers
+zmm0	ZMM0		zmmreg		0
+zmm1-31	ZMMREG		zmmreg		1
+k0	KREG0		kreg		0
+k1-7	KREG		kreg		1

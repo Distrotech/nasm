@@ -162,6 +162,8 @@ typedef uint64_t opflags_t;
 #define REG_CLASS_RM_MMX        GEN_REG_CLASS(4)
 #define REG_CLASS_RM_XMM        GEN_REG_CLASS(5)
 #define REG_CLASS_RM_YMM        GEN_REG_CLASS(6)
+#define REG_CLASS_RM_ZMM        GEN_REG_CLASS(7)
+#define REG_CLASS_KREG          GEN_REG_CLASS(8)
 
 #define is_class(class, op)     (!((opflags_t)(class) & ~(opflags_t)(op)))
 
@@ -186,6 +188,10 @@ typedef uint64_t opflags_t;
 #define RM_YMM                  (                  REG_CLASS_RM_YMM           | REGMEM)                 /* YMM (AVX) operand */
 #define YMMREG                  (                  REG_CLASS_RM_YMM           | REGMEM | REGISTER)      /* YMM (AVX) register */
 #define YMM0                    (GEN_SUBCLASS(1) | REG_CLASS_RM_YMM           | REGMEM | REGISTER)      /* YMM register zero */
+#define ZMMREG                  (                  REG_CLASS_RM_ZMM           | REGMEM | REGISTER)      /* ZMM (Phi) register */
+#define ZMM0                    (GEN_SUBCLASS(1) | REG_CLASS_RM_ZMM           | REGMEM | REGISTER)      /* ZMM register zero */
+#define KREG0                   (                  REG_CLASS_KREG                      | REGISTER)      /* K0 (Phi) register */
+#define KREG                    (                  REG_CLASS_KREG                      | REGISTER)      /* K (Phi) register */
 #define REG_CDT                 (                  REG_CLASS_CDT    | BITS32           | REGISTER)      /* CRn, DRn and TRn */
 #define REG_CREG                (GEN_SUBCLASS(1) | REG_CLASS_CDT    | BITS32           | REGISTER)      /* CRn */
 #define REG_DREG                (GEN_SUBCLASS(2) | REG_CLASS_CDT    | BITS32           | REGISTER)      /* DRn */
