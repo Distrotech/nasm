@@ -867,16 +867,11 @@ static int64_t calcsize(int32_t segment, int64_t offset, int bits,
         opex = 0;               /* For the next iteration */
 
         switch (c) {
-        case 01:
-        case 02:
-        case 03:
-        case 04:
+	case4(01):
             codes += c, length += c;
             break;
 
-        case 05:
-        case 06:
-        case 07:
+	case3(05):
             opex = c;
             break;
 
@@ -988,9 +983,7 @@ static int64_t calcsize(int32_t segment, int64_t offset, int bits,
             ins->vex_wlp = *codes++;
             break;
 
-        case 0271:
-        case 0272:
-        case 0273:
+        case3(0271):
             hleok = c & 3;
             break;
 
@@ -1111,9 +1104,7 @@ static int64_t calcsize(int32_t segment, int64_t offset, int bits,
         case 0360:
             break;
 
-        case 0361:
-        case 0362:
-        case 0363:
+        case3(0361):
             length++;
             break;
 
@@ -1126,9 +1117,7 @@ static int64_t calcsize(int32_t segment, int64_t offset, int bits,
             length++;
             break;
 
-        case 0370:
-        case 0371:
-        case 0372:
+        case3(0370):
             break;
 
         case 0373:
