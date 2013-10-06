@@ -83,10 +83,11 @@ NASM =	nasm.$(O) nasmlib.$(O) ver.$(O) \
 	strfunc.$(O) tokhash.$(O) regvals.$(O) regflags.$(O) \
 	ilog2.$(O) \
 	lib/strlcpy.$(O) \
-	preproc-nop.$(O)
+	preproc-nop.$(O) \
+	iflag.$(O)
 
 NDISASM = ndisasm.$(O) disasm.$(O) sync.$(O) nasmlib.$(O) ver.$(O) \
-	insnsd.$(O) insnsb.$(O) insnsn.$(O) regs.$(O) regdis.$(O)
+	insnsd.$(O) insnsb.$(O) insnsn.$(O) regs.$(O) regdis.$(O) iflag.$(O)
 #-- End File Lists --#
 
 all: nasm$(X) ndisasm$(X) nasm.1 ndisasm.1 rdf
@@ -102,6 +103,10 @@ ndisasm$(X): $(NDISASM) $(XOBJS)
 # though, so it isn't necessary to have Perl just to recompile NASM
 # from the distribution.
 
+insns.pl: insns-iflags.pl
+
+iflag.c iflag.h: insns.dat insns.pl
+	$(PERL) $(srcdir)/insns.pl -t $(srcdir)/insns.dat
 insnsb.c: insns.dat insns.pl
 	$(PERL) $(srcdir)/insns.pl -b $(srcdir)/insns.dat
 insnsa.c: insns.dat insns.pl

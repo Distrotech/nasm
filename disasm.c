@@ -404,7 +404,7 @@ static int matches(const struct itemplate *t, uint8_t *data,
     ins->rex = prefix->rex;
     memset(ins->prefixes, 0, sizeof ins->prefixes);
 
-    if (t->flags & (segsize == 64 ? IF_NOLONG : IF_LONG))
+    if (itemp_has(t, (segsize == 64 ? IF_NOLONG : IF_LONG)))
         return false;
 
     if (prefix->rep == 0xF2)
@@ -1150,7 +1150,9 @@ int32_t disasm(uint8_t *data, char *output, int outbufsize, int segsize,
 	     */
             if (works) {
 		int i, nprefix;
-                goodness = ((*p)->flags & IF_PFMASK) ^ prefer;
+                /* FIXME */
+//                goodness = ((*p)->flags & IF_PFMASK) ^ prefer;
+                goodness = 0;
 		nprefix = 0;
 		for (i = 0; i < MAXPREFIX; i++)
 		    if (tmp_ins.prefixes[i])
