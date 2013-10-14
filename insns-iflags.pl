@@ -265,9 +265,30 @@ sub write_iflags() {
     print N "     IF_GENBIT(IF_AR3) |\\\n";
     print N "     IF_GENBIT(IF_AR4))\n";
 
+    print N "\n";
     print N "#define itemp_smask(itemp)      (insns_flags[(itemp)->iflag_idx].field[0] & IF_SMASK)\n";
     print N "#define itemp_arg(itemp)        (((insns_flags[(itemp)->iflag_idx].field[0] & IF_ARMASK) >> IF_AR0) - 1)\n";
 
+    print N "\n";
+    print N "#define IF_CPUMASK               \\\n";
+    print N "    (IF_GENBIT(IF_8086)         |\\\n";
+    print N "     IF_GENBIT(IF_186)          |\\\n";
+    print N "     IF_GENBIT(IF_286)          |\\\n";
+    print N "     IF_GENBIT(IF_386)          |\\\n";
+    print N "     IF_GENBIT(IF_486)          |\\\n";
+    print N "     IF_GENBIT(IF_PENT)         |\\\n";
+    print N "     IF_GENBIT(IF_P6)           |\\\n";
+    print N "     IF_GENBIT(IF_KATMAI)       |\\\n";
+    print N "     IF_GENBIT(IF_WILLAMETTE)   |\\\n";
+    print N "     IF_GENBIT(IF_PRESCOTT)     |\\\n";
+    print N "     IF_GENBIT(IF_X86_64)       |\\\n";
+    print N "     IF_GENBIT(IF_NEHALEM)      |\\\n";
+    print N "     IF_GENBIT(IF_WESTMERE)     |\\\n";
+    print N "     IF_GENBIT(IF_SANDYBRIDGE)  |\\\n";
+    print N "     IF_GENBIT(IF_FUTURE)       |\\\n";
+    print N "     IF_GENBIT(IF_IA64)         |\\\n";
+    print N "     IF_GENBIT(IF_CYRIX)        |\\\n";
+    print N "     IF_GENBIT(IF_AMD))\n";
     # FIXME These are not yet addressed
     # IF_PLEVEL
     # IF_SPMASK
