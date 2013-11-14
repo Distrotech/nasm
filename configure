@@ -4429,7 +4429,7 @@ fi
 
   test -n "$NROFF" && break
 done
-test -n "$NROFF" || NROFF="echo"
+test -n "$NROFF" || NROFF="false"
 
 for ac_prog in acrodist
 do
