@@ -44,6 +44,8 @@ FIND		= find
 O               = @OBJEXT@
 X               = @EXEEXT@
 
+INSTALLROOT	= $(DESTDIR)
+
 # Debug stuff
 ifeq ($(TRACE),1)
 	CFLAGS += -DNASM_TRACE
